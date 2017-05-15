@@ -1,0 +1,34 @@
+<p id="notice" class="alert alert-info"><%= notice %></p>
+
+<table class="table  table-hover">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+
+      <th>Attachment</th>
+      <th>User Email</th>
+      
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lectures.each do |lecture| %>
+      <tr>
+        <td><%= lecture.try(:course).try(:title) %></td>
+        <td><%= raw lecture.content %></td>
+        <td><%= lecture.attachment %></td>
+        <td><%= lecture.try(:user).try(:email) %></td>
+        <td><%= link_to 'Show', lecture ,class:"btn btn-info"%></td>
+        <% if lecture.user == current_user %>
+        <td><%= link_to 'Edit', edit_lecture_path(lecture) ,class:"btn btn-info"%></td>
+        <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } ,class:"btn btn-info"%></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Lecture', new_lecture_path ,class:"btn btn-info"%>

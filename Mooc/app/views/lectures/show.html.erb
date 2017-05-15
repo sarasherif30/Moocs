@@ -1,0 +1,51 @@
+
+<div class="container">
+
+  <div class="jumbotron ">
+  <!-- <pre> -->
+  Title: <%= @lecture.title %><br>
+
+  Content: <%= raw @lecture.content %>
+
+ <span class=" glyphicon glyphicon-download-alt "> </span> Download Attachment <a href="<%= @lecture.attachment_url %>" download> <%= @lecture.attachment %></a>
+  <% if current_user && @lecture.user == current_user %>
+  <% end %>
+  <!-- </pre> -->
+  <br><br>
+  <%= link_to like_lecture_path(@lecture) , method: :put do %>
+    <button type="button" class="btn btn-info">
+      <span class="glyphicon glyphicon-thumbs-up" >Like </span>
+      <span ><%= @lecture.get_upvotes.size %></span>
+    </button>        
+    <% end  %>     
+  <%= link_to dislike_lecture_path(@lecture) , method: :put do %>
+    <button type="button" class="btn btn-info">
+      <span class=" glyphicon glyphicon-exclamation-sign">Spam</span>
+      <span ><%= @lecture.get_downvotes.size %></span>
+    </button>
+    <% end  %>
+ 
+
+   </div> 
+
+  <div class="panel panel-danger">
+    <div class="panel-heading">
+      <h2> Comments </h2>
+    </div>
+    <div class="panel-body">
+     <%= render 'comments/comment' %>
+    </div>
+        
+  </div>
+</div>  
+  <h4>
+    <%= link_to 'Back', lectures_path ,class:"btn btn-info"%>
+  </h4>
+
+
+
+<style>
+  .jumbotron{
+    background: pink;
+  }
+</style>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Moocs</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+  <!-- bootstap onile links -->
+  <!-- <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+  <!-- end bootstrap -->
+  <style>
+  .img{
+    height: 70px;
+    float: left;
+    margin-right: 15px;
+  }
+/*  h5 , img {
+    float: right;
+
+  }*/
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= image_tag 'logo.png' ,class:"img"%>
+      <%= link_to 'Rails Moocs' , home_index_path ,class:"navbar-brand"%>
+      <!-- <a class="navbar-brand" href="">Rails Moocs</a> -->
+
+      <!-- <div class="container"> -->
+      
+      <!-- </div> -->
+    </div>
+    <ul class="nav navbar-nav">
+     
+      <li><%= link_to 'Courses' , courses_path %></li>
+      <li><%= link_to 'Lectures' , lectures_path %></li>
+      <% if current_user.try(:name) == "admin" %>
+        <li><%= link_to "Admin", admin_root_path %></li>
+       <% end %> 
+      <% if current_user.present? %>
+          <li><%= link_to "Log out", destroy_user_session_path, :method => "delete" %></li>
+
+          <h5 style="color: #fff"> Welcome:<img src="<%= current_user.profile_picture %>" width="30" height="30"/> <%= current_user.try(:email)%></h5>
+          <%= link_to "Edit Profile", edit_user_registration_path %>
+        <% else %>       
+          <li><%= link_to "Log in", new_user_session_path %></li>
+          <li><%= link_to "Sign up", new_user_registration_path %></li>
+        <% end %>
+    </ul>
+    
+  </div>
+</nav>
+   <p class="notice alert alert-danger"><%= notice %></p>
+   <p class="alert" class="alert alert-info"><%= alert %></p>
+   
+<div class="container"><%= yield %></div>
+
+</body>
+</html>

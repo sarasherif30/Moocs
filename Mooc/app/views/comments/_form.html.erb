@@ -1,0 +1,15 @@
+
+<%= form_for([@lecture, @lecture.comments.build]) do |f| %>
+  
+    <div class="field">
+    <%= f.label :New_Comment %><br>
+    <%= f.text_area :content %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+
+<% end %>
+
+
+

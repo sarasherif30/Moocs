@@ -1,0 +1,24 @@
+
+<div class="jumbotron">
+  <div class="hero-text">
+            <h1>Learn a new skill online, on your time</h1>
+            <div class="subheading first">
+            <p>5,949 courses in Business, Technology and Creative Skills taught by industry experts.</p>
+            </div>
+
+        </div>
+  <!-- <a class="btn btn-success btn-lg" href="" role="button">Learn more</a> -->
+  <% if current_user.present? %>
+          <%= link_to "Create Course" , new_course_path ,class: "btn btn-info"%>
+          <%= link_to "Log out", destroy_user_session_path, :method => "delete" ,class: "btn btn-danger"%>
+        <% else %>       
+          <%= link_to "Log in", new_user_session_path ,class: "btn btn-primary"%>
+          <%= link_to "Sign up", new_user_registration_path,class: "btn btn-info" %>
+        <% end %>
+</div>
+
+<style>
+  .jumbotron{
+    background: pink;
+  }
+</style>

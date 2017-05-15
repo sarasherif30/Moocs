@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<title> welcome to my new page </title>
+	</head>
+	<body>
+		<ul type="square">
+			<li>first</li>
+			<li>second</li>
+			<li>third</li>
+		</ul>
+		<ol type="A"> 
+			<li>GO</li>
+			<li>WAIT</li>
+			<li>STAND</li>
+		</ol>
+		<dl>
+			<dt> HTML</dt>
+				<dd>Hyper Text Markup lang.</dd>
+		</dl>
+		<ul type="circle">
+			<li>first</li>
+			<li>second</li>
+			<ol>
+				<li>asmaa</li>
+				<li>ola</li>
+			</ol>
+		</ul>
+	</body>
+</html>

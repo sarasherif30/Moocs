@@ -1,0 +1,32 @@
+
+<h1> Users</h1>
+
+<table class="table  table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Date of birth</th>
+      <th>Gender</th>
+      <th>Profile picture</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.date_of_birth %></td>
+        <td><%= try(user.gender) %></td>
+        <td><%= image_tag user.profile_picture.thumb.url %></td>
+        <td><%= link_to 'Show', user ,class:"btn btn-info"%></td>
+        <td><%= link_to 'Edit', edit_user_path(user) ,class:"btn btn-warning"%></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } ,class:"btn btn-success"%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User', new_user_path ,class:"btn btn-warning"%>

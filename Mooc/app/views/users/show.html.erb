@@ -1,0 +1,32 @@
+<p id="notice" class="alert alert-danger"><%= notice %></p>
+
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <p>
+        <strong>Name:</strong>
+        <%= @user.name %>
+      </p>
+      <div class="caption">
+        <p>
+        <strong>Date of birth:</strong>
+        <%= @user.date_of_birth %>
+        </p>
+
+        <p>
+          <strong>Gender:</strong>
+          <%= @user.gender %>
+        </p>
+
+          <p>
+            <strong>Profile picture:</strong>
+            <%= image_tag @user.profile_picture.thumb.url %>
+          </p>
+        <p><% if current_user %>
+				<%= link_to 'Edit', edit_user_path(@user), class:"btn btn-info" %>
+ 			 <% end %> 
+ 		     <%= link_to 'Back', users_path , class:"btn btn-success"%></p>
+      </div>
+    </div>
+  </div>
+</div>

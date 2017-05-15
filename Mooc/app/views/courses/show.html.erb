@@ -1,0 +1,25 @@
+<p id="notice" class="alert alert-success"><%= notice %></p>
+
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      
+      <div class="caption">
+        <h3>
+		  <strong>Title:</strong>
+		  <%= @course.title %>
+		</h3>
+        <p>
+		  <strong>User Name:</strong>
+		  <%= @course.try(:user).try(:name) %>
+		</p>
+        <p><% if current_user&&@course.user==current_user  %>
+				<%= link_to 'Edit', edit_course_path(@course), class:"btn btn-primary" %>
+ 			 <% end %> 
+ 		<%= link_to 'Back', courses_path , class:"btn btn-success"%></p>
+      </div>
+    </div>
+    
+
+  </div>
+</div>
